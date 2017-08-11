@@ -7,7 +7,7 @@
         xmlns="http://camel.apache.org/schema/spring">
         <route id="spring-kafka-consumer-route">
             <from id="_from1"
-                uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId&amp;autoOffsetReset=earliest&amp;consumersCount=1&amp;keyDeserializer=org.apache.kafka.common.serialization.StringDeserializer&amp;valueDeserializer=org.apache.kafka.common.serialization.StringDeserializer" />
+                uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId&amp;autoOffsetReset=earliest&amp;consumersCount=1" />
             <log id="_log1" message="Received Body: ${body} " />
             <log id="_log2" message="Headers: ${headers}" />
         </route>
