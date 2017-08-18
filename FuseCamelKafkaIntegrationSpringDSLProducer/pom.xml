@@ -3,12 +3,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.mycompany</groupId>
-    <artifactId>camel-kafka-spring-example</artifactId>
+    <groupId>com.mycompany.example</groupId>
+    <artifactId>camel-kafka-producer-springdsl</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
-    <name>Fuse Kafka Example</name>
-    <description>Camel Kafka Example</description>
+    <name>Fuse Kafka Producer Example</name>
+    <description>Camel Kafka Producer Example</description>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -47,10 +47,10 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-kafka</artifactId>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-hbase</artifactId>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -131,8 +131,12 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-SymbolicName>FuseCamelKafkaIntegrationSpringDSL</Bundle-SymbolicName>
+                        <Bundle-SymbolicName>FuseCamelKafkaProducerSpringDSL</Bundle-SymbolicName>
+                        <DynamicImport-Package>*</DynamicImport-Package>
+                        <!-- META-INF.spring.com.rajiv.example.camel.kafka.springdsl, -->
                         <Import-Package>
+                            *,org.springframework.beans.factory,
+                            com.rajiv.example.camel.kafka.springdsl,
                         	org.apache.kafka.clients,
                         	org.apache.kafka.clients.consumer,
                         	org.apache.kafka.clients.consumer.internals,

@@ -5,21 +5,16 @@
     xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
     
     
-    <bean id="producerExchangeHeaders" class="com.rajiv.example.camel.kafka.springdsl.ProducerExchangeHeaders"/>
-    
     <camelContext id="kafka-example-context"
         xmlns="http://camel.apache.org/schema/spring">
         <route id="spring-kafka-consumer-route">
             <!-- <from id="_from1"
-                uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId&amp;autoOffsetReset=earliest&amp;consumersCount=1" />
-             -->
-             
-             <from uri="timer://myTimer?fixedRate=true&amp;period=5000"/>
+                uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId&amp;autoOffsetReset=earliest&amp;consumersCount=1" /> -->
+            <from id="_from1"
+                uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId" />
             <log id="_log1" message="Received Body: ${body} " />
             <log id="_log2" message="Headers: ${headers}" />
-            <to id="_toBean1" uri="bean:producerExchangeHeaders?method=loadKafkaProducerHeaders"/>
-            <log id="_log3" message="Headers: ${headers}" />
-            <to id="_to1" uri="kafka:localhost:9093?topic=topic2&amp;clientId=myKafkaProducerApp"/>
+            <to uri="direct-vm:producerApp"/>
         </route>
     </camelContext>
 </beans>
