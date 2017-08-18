@@ -12,8 +12,11 @@
                 uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId&amp;autoOffsetReset=earliest&amp;consumersCount=1" /> -->
             <from id="_from1"
                 uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId" />
+            
             <log id="_log1" message="Received Body: ${body} " />
             <log id="_log2" message="Headers: ${headers}" />
+            <removeHeaders pattern="*" excludePattern="breadcrumbId"/>
+            <log id="_log3" message="Headers: ${headers}" />
             <to uri="direct-vm:producerApp"/>
         </route>
     </camelContext>
