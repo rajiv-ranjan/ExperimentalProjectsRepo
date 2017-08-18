@@ -10,11 +10,11 @@
     <camelContext id="kafka-example-context"
         xmlns="http://camel.apache.org/schema/spring">
         <route id="spring-kafka-consumer-route">
-            <!-- <from id="_from1"
+            <from id="_from1"
                 uri="kafka:localhost:9092?topic=topic1&amp;groupId=testingGroupId&amp;autoOffsetReset=earliest&amp;consumersCount=1" />
-             -->
+            
              
-             <from uri="timer://myTimer?fixedRate=true&amp;period=5000"/>
+             <!-- <from uri="timer://myTimer?fixedRate=true&amp;period=5000"/> -->
             <log id="_log1" message="Received Body: ${body} " />
             <log id="_log2" message="Headers: ${headers}" />
             <to id="_toBean1" uri="bean:producerExchangeHeaders?method=loadKafkaProducerHeaders"/>
